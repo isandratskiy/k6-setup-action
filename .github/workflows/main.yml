@@ -3,7 +3,7 @@ name: Check K6 Action
 on: [push]
 
 jobs:
-  start-selenoid:
+  test:
     runs-on: ubuntu-latest
     name: Test k6 install action
     env: 
