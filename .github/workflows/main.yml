@@ -16,7 +16,7 @@ jobs:
             node-version: 14
 
         - name: Set up k6
-          uses: isandratskiy/k6-setup-action@v1.0.2
+          uses: isandratskiy/k6-setup-action@v1.0.3
 
         - name: Checkout k6 tests
           uses: actions/checkout@v2
