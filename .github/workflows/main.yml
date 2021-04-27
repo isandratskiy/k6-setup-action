@@ -6,7 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Test k6 install action
-    env: 
+    env:
       TEST_PROJECT: k6-typescript-parcel-example
 
     steps:
@@ -16,7 +16,7 @@ jobs:
             node-version: 14
 
         - name: Set up k6
-          uses: isandratskiy/k6-setup-action@v1.0.0
+          uses: isandratskiy/k6-setup-action@v1.0.1
 
         - name: Checkout k6 tests
           uses: actions/checkout@v2
@@ -33,7 +33,7 @@ jobs:
         - name: Run 'Create crocodiles' load test
           if: always()
           run: k6 run $TEST_PROJECT/dist/crocodiles.create.js
-    
+
         - name: Run 'Search crocodiles' load test
           if: always()
           run: k6 run $TEST_PROJECT/dist/crocodiles.search.js
