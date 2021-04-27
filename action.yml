@@ -1,0 +1,10 @@
+name: 'K6 Local Setup Action'
+description: 'GitHub Action to setup K6 locally'
+author: 'isandratskiy'
+branding:
+  icon: 'anchor'
+  color: 'blue'
+
+runs:
+  using: 'node12'
+  main: 'index.js'
