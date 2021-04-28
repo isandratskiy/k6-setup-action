@@ -10,30 +10,30 @@ jobs:
       TEST_PROJECT: k6-typescript-parcel-example
 
     steps:
-        - name: Set up Node.js 14
-          uses: actions/setup-node@v2-beta
-          with:
-            node-version: 14
+      - name: Set up Node.js 14
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14
 
-        - name: Set up k6
-          uses: isandratskiy/k6-setup-action@v1.0.3
+      - name: Set up k6
+        uses: isandratskiy/k6-setup-action@v1.0.4
 
-        - name: Checkout k6 tests
-          uses: actions/checkout@v2
-          with:
-            repository: isandratskiy/${{ env.TEST_PROJECT }}
-            path: ${{ env.TEST_PROJECT }}
+      - name: Checkout k6 tests
+        uses: actions/checkout@v2
+        with:
+          repository: isandratskiy/${{ env.TEST_PROJECT }}
+          path: ${{ env.TEST_PROJECT }}
 
-        - name: Build project
-          run: |
-            cd $TEST_PROJECT
-            npm install
-            npm run build
+      - name: Build project
+        run: |
+          cd $TEST_PROJECT
+          npm install
+          npm run build
 
-        - name: Run 'Create crocodiles' load test
-          if: always()
-          run: k6 run $TEST_PROJECT/dist/crocodiles.create.js
+      - name: Run 'Create crocodiles' load test
+        if: always()
+        run: k6 run $TEST_PROJECT/dist/crocodiles.create.js
 
-        - name: Run 'Search crocodiles' load test
-          if: always()
-          run: k6 run $TEST_PROJECT/dist/crocodiles.search.js
+      - name: Run 'Search crocodiles' load test
+        if: always()
+        run: k6 run $TEST_PROJECT/dist/crocodiles.search.js
